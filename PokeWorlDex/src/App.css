@@ -1,6 +1,12 @@
 .site-header{
   background: linear-gradient(90deg, #ffcb05 0%, #ffd873 100%);
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .site-header .container{
@@ -54,4 +60,8 @@
     gap: 12px;
     margin-top: 8px;
   }
+}
+
+body{
+  background-color: rgb(247, 241, 225);
 }
