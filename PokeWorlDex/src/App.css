@@ -19,6 +19,12 @@
   gap: 16px;
 }
 
+.site-title{
+  font-size: 50px;
+  font-weight: 700;
+  color: #1b1b1b;
+}
+
 .brand .logo{
   font-weight: 800;
   color: #1b1b1b;
@@ -32,6 +38,10 @@
   gap: 16px;
   margin: 0;
   padding: 0;
+}
+
+.main-nav ul li{
+  font-size: 20px;
 }
 
 .main-nav a{
