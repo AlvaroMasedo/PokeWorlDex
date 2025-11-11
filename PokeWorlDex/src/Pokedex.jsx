@@ -1,5 +1,18 @@
 import React from "react";
 
 export default function Pokedex(props) {
-    return <h2>Bienvenido, {props.nombre}</h2>;
+    const EQUIPOENTRENADOR = {Nombre: "Ash", 
+                                Equipo: ["Charizard", "Venusaur", "Pikachu", "Weedle", "Lucario", "Hoppip"]
+    };
+return (
+    <div>
+      <h2>El entrenador {EQUIPOENTRENADOR.nombre} te desafía</h2>
+      <p>Su equipo es:</p>
+      <ul>
+        {EQUIPOENTRENADOR.equipo.map((pokemon) => (
+          <li key={pokemon}>{pokemon}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
