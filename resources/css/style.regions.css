@@ -1,0 +1,21 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(234, 253, 253);
+}
+
+.parent {
+    display: inline-grid;
+    gap: 8px;
+    background-color: blue ;
+}
+    
+.parent div{
+    background-color: lightblue;
+    border: 0; 
+    border-radius: 10%;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
