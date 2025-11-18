@@ -1,0 +1,41 @@
+body {
+    background-color: rgb(234, 253, 253);
+}
+.parent {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 8px;
+}
+    
+.div1 {
+    grid-row: span 2 / span 2;
+    grid-row-start: 2;
+    background-color: blue;
+    border-radius: 5px;
+}
+
+.div2 {
+    grid-row: span 2 / span 2;
+    grid-column-start: 3;
+    grid-row-start: 2;
+    background-color: blue;
+    border-radius: 5px;
+}
+
+.div3 {
+    grid-row: span 2 / span 2;
+    grid-column-start: 5;
+    grid-row-start: 2;
+    background-color: blue;
+    border-radius: 5px;
+}
+
+.div4 {
+    grid-row: span 2 / span 2;
+    grid-column-start: 7;
+    grid-row-start: 2;
+    background-color: blue;
+    border-radius: 5px;
+}
+        
