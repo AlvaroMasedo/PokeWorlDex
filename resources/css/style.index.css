@@ -9,40 +9,45 @@ body {
     gap: 8px;
     background-color: aqua;
 }
+
+.parent div {
+    background: linear-gradient(120deg, #608bca 0%, #a2c0ec 100%);
+    border-radius: 14px;
+    padding: 5vh;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.parent div:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(17,40,70,0.26);
+}
     
 .div1 {
     grid-row: span 2 / span 2;
     grid-row-start: 2;
     grid-column-start: 2;
-    background-color: blue;
-    border-radius: 10%;
-    padding: 5vh;
 }
 
 .div2 {
     grid-row: span 2 / span 2;
     grid-column-start: 3;
     grid-row-start: 2;
-    background-color: blue;
-    border-radius: 10%;
-    padding: 5vh;
 }
 
 .div3 {
     grid-row: span 2 / span 2;
     grid-column-start: 4;
     grid-row-start: 2;
-    background-color: blue;
-    border-radius: 10%;
-    padding: 5vh;
 }
 
 .div4 {
     grid-row: span 2 / span 2;
     grid-column-start: 5;
     grid-row-start: 2;
-    background-color: blue;
-    border-radius: 10%;
-    padding: 5vh;
 }
-        
+
+img {
+    border: 8px solid rgba(79,126,196,0.95);
+    border-radius: 25px;
+    background-color: rgba(79,126,196,0.95);
+}
