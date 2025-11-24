@@ -57,7 +57,7 @@ h2{
 }
 
 .parent div img{
-    border-radius: 10px;
+    border-radius: 25px;
     border: 8px solid rgba(79,126,196,0.95);
     width: 100%;
     height: auto;
