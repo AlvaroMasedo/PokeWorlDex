@@ -6,33 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PokeWorlDex</title>
     <link rel="stylesheet" href="resources/css/style.index.css" />
+    <link rel="stylesheet" href="resources/css/style.header.css"/>
+
     <link rel="shortcut icon" href="resources/img/icon.ico" />
 </head>
 
 <body>
-    <nav>
     <div id="header-root"></div>
-    </nav>
     <main>
         <div class="parent">
             <div class="div1">
                 <img src="resources/img/mapa.webp" alt="Pokemon Map">
-                <a href="#" class="btn"></a>
+                <a href="app/view/regions.html" class="btn">Mapa</a>
             </div>
 
             <div class="div2">
                 <img src="resources/img/Rotom-pokedex.webp" alt="Pokedex Rotom Icon">
+                <a href="#" class="btn">Pokedex</a>
             </div>
 
             <div class="div3">
                 <img src="resources/img/red.webp" alt="Red Character">
+                <a href="#" class="btn">Personajes</a>
             </div>
 
             <div class="div4">
                 <img src="resources/img/Type_Fire.webp" alt="Fire type">
+                <a href="#" class="btn">Tabla de Tipos</a>
             </div>
         </div>
     </main>
+
+    <div class="footer-root"></div>
+
     <!-- React and ReactDOM desde CDN -->
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
@@ -40,8 +46,8 @@
     <!-- Babel per permitir JSX -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <!-- Header amb JSX -->
-    <script type="text/babel" src="../../resources/react/header.jsx"></script>
+    <!-- Header/Footer amb JSX -->
+    <script type="text/babel" src="resources/react/header.jsx"></script>
+    <script type="text/babel" src="resources/react/footer.jsx"></script>
 </body>
-
 </html>
