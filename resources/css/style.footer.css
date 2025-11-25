@@ -25,6 +25,8 @@ footer {
     transition: transform .3s ease;
     padding: 10px;
     border-radius: 15px;
+    width: auto;
+    height: 40px;
 }
 
 .navF img:hover {
