@@ -4,6 +4,7 @@ html, body {
 
 main {
     margin-top: 13vh;
+    margin-bottom: 13vh;
 }
 body {
     background-color: rgb(234, 253, 253);
