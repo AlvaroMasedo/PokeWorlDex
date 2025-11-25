@@ -1,0 +1,15 @@
+main{
+    margin: 0;
+    background-image: url('../../resources/img/maps/KantoMapGrande.webp');
+}
+
+h1{
+    text-align: right;
+    margin: 1% 10% 1% 0;
+    color: #a2c0ec;
+    -webkit-text-stroke: 3.5px #7a9bcc;
+    letter-spacing: 6px;
+    font-weight: 200;
+    font-size: 60px;
+    font-family:  'Pokemon Solid', sans-serif;;
+}
