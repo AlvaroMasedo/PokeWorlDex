@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../resources/css/style.regions.css">
     <link rel="stylesheet" href="../../resources/css/style.header.css">
+    <link rel="stylesheet" href="../../resources/css/style.footer.css">
     <link rel="shortcut icon" href="../../resources/img/icon.ico" type="image/x-icon">
     
     <!-- Fonts from Google Fonts -->
@@ -31,7 +32,7 @@
         <div class="parent">
             <div>
                 <img src="../../resources/img/kantoMap.webp" alt="Kanto region map">
-                <a href="#" class="button">Kanto</a>
+                <a href="mapa.html" class="button">Kanto</a>
             </div>
             <div>
                 <img src="../../resources/img/JohtoMap.webp" alt="Johto region map">
@@ -74,6 +75,9 @@
         </div>
     </main>
 
+    <!-- Footer en React-->
+    <div id="footer-root"></div>
+
     <!-- React and ReactDOM desde CDN -->
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
@@ -83,6 +87,9 @@
 
     <!-- Header amb JSX -->
     <script type="text/babel" src="../../resources/react/header.jsx"></script>
+
+    <!-- Footer amb JSX -->
+    <script type="text/babel" src="../../resources/react/footer.jsx"></script>
 </body>
 
 </html>
