@@ -7,9 +7,13 @@ body{
 
 h2{
     text-align: center;
-    margin: 4% 0 2% 0;
-    color: #224;
-    letter-spacing: 0.6px;
+    margin: 1% 0 1% 0;
+    color: #a2c0ec;
+    -webkit-text-stroke: 3.5px #7a9bcc;
+    letter-spacing: 2px;
+    font-weight: 200;
+    font-size: 60px;
+    font-family:  'Pokemon Solid', sans-serif;;
 }
 
 .parent{
