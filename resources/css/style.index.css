@@ -51,7 +51,7 @@ body {
     grid-column-start: 4;
 }
 
-img {
+.parent img {
     border: 8px solid rgba(79,126,196,0.95);
     border-radius: 25px;
     background-color: rgba(79,126,196,0.95);
