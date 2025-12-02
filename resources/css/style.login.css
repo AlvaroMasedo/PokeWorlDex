@@ -1,0 +1,79 @@
+body {
+    background-image: url(../img/login/fondo.webp);
+    background-position-y: -25vh;
+}
+
+h1 {
+    text-align: center;
+    margin: 1% 0 1% 0;
+    color: #a2c0ec;
+    -webkit-text-stroke: 3.5px #7a9bcc;
+    letter-spacing: 2px;
+    font-weight: 200;
+    font-size: 50px;
+    font-family:  'Pokemon Solid', sans-serif;
+}
+
+.form {
+    text-align: center;
+    box-shadow: 0px 2px 10px 3px rgb(144, 176, 255);
+    border-radius: 10px;
+    height: 400px;
+    width: 600px;
+    margin: auto;
+    background-color: rgba(238, 243, 255, 0.881);
+    margin-top: 3.5%;
+}
+
+.form input {
+    width: 80%;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 7px;
+    transition: 0.3s ease;
+}
+
+.form input:focus {
+    background-color: rgb(240, 240, 240);
+    box-shadow: 0px 2px 10px 3px rgb(144, 176, 255);   
+}
+
+.form input:hover {
+    background-color: rgb(240, 240, 240);
+    box-shadow: 0px 2px 10px 3px rgb(144, 176, 255);   
+}
+
+.form label {
+    font-family: Quicksand, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    font-weight: 700;
+}
+
+.btns button {
+    padding: 10px;
+    width: 100px;
+    border-radius: 5px;
+    border: none;
+    margin: 10px;
+}
+
+.submit {
+    transition: 0.3s ease;
+    background-color: #62a1ff;
+    color: white;
+}
+
+.submit:hover {
+    background-color: #a3c8ff;
+    color: black;
+}
+
+.register {
+    transition: 0.3s ease;
+    background-color: rgb(172, 171, 171);
+    color: white;
+}
+
+.register:hover {
+    background-color: rgb(202, 202, 202);
+    color: black;
+}
