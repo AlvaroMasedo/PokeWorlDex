@@ -35,11 +35,19 @@ h1{
 
 h2{
     font-family: Quicksand, sans-serif;
-    font-size: 24px;
-    text-align: center;
-    color: white;
+    font-size: 28px;
+    text-align: left;
+    margin-left: 5%;
+    color: #224;
 }
 
+h3{
+    font-family: Quicksand, sans-serif;
+    font-size: 20px;
+    text-align: left;
+    margin-left: 5%;
+    color: #224;
+}
 .section-region{
     background-color: rgba(224, 224, 224, 0.87);
     border: 9px solid #3695a1;
@@ -47,7 +55,7 @@ h2{
     height: 630px;
     width: 1240px;
     margin-top: 2%;
-    margin-left: 5%;
+    margin-left: 2%;
 }
 
 .text{
