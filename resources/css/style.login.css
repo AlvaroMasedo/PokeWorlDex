@@ -1,6 +1,19 @@
 body {
     background-image: url(../img/login/fondo.webp);
     background-position-y: -25vh;
+    background-repeat: no-repeat;
+    background-size: 400vh;
+}
+
+.name {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.nameInput {
+    width: 40vh;
+    margin: 15px;
 }
 
 h1 {
@@ -19,12 +32,16 @@ h1 {
     box-shadow: 0px 2px 10px 3px rgb(144, 176, 255);
     border-radius: 10px;
     height: auto;
-    width: 600px;
+    width: 800px;
     margin: auto;
     background-color: rgba(238, 243, 255, 0.881);
     margin-top: 3.5%;
     padding: 5px;
     margin-bottom: 50px;
+}
+
+.input {
+  width: 76%;
 }
 
 .form input {
@@ -36,7 +53,6 @@ h1 {
     padding: 0 10px;
     transition: .2s;
     margin-bottom: 20px;
-    width: 76%;
     justify-self: center;
     border: 1px solid #ededef;
 }

@@ -12,7 +12,7 @@ body {
 }
 .parent {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 18px;
     margin: 10px;
@@ -34,15 +34,10 @@ body {
     
 .div1 {
     grid-row: span 2 / span 2;
-    grid-column-start: 1;
-}
-
-.div2 {
-    grid-row: span 2 / span 2;
     grid-column-start: 2;
 }
 
-.div3 {
+.div2 {
     grid-row: span 2 / span 2;
     grid-column-start: 3;
 }
