@@ -16,4 +16,4 @@ Disallow: /lib/
 Disallow: /resources/js/
 
 # Sitemap
-Sitemap: https://PokeWorlDex/sitemap.xml
+Sitemap: https://PokeWorlDex.netlify.app/sitemap.xml

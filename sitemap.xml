@@ -3,7 +3,7 @@
     
     <!-- Página principal -->
     <url>
-        <loc>https://PokeWorlDex/index.html</loc>
+        <loc>https://PokeWorlDex.netlify.app/index.html</loc>
         <lastmod>2026-01-26</lastmod>
         <priority>1.00</priority>
         <changefreq>weekly</changefreq>
@@ -11,7 +11,7 @@
     
     <!-- Sección de Regiones -->
     <url>
-        <loc>https://PokeWorlDex/app/view/regions.html</loc>
+        <loc>https://PokeWorlDex.netlify.app/app/view/regions.html</loc>
         <lastmod>2026-01-26</lastmod>
         <priority>0.90</priority>
         <changefreq>monthly</changefreq>
@@ -19,7 +19,7 @@
     
     <!-- Pokédex completa -->
     <url>
-        <loc>https://PokeWorlDex/app/view/pokedex.html</loc>
+        <loc>https://PokeWorlDex.netlify.app/app/view/pokedex.html</loc>
         <lastmod>2026-01-26</lastmod>
         <priority>0.95</priority>
         <changefreq>weekly</changefreq>
@@ -27,7 +27,7 @@
     
     <!-- Página individual de Pokémon -->
     <url>
-        <loc>https://PokeWorlDex/app/view/pokemon.html</loc>
+        <loc>https://PokeWorlDex.netlify.app/app/view/pokemon.html</loc>
         <lastmod>2026-01-26</lastmod>
         <priority>0.80</priority>
         <changefreq>weekly</changefreq>
@@ -35,7 +35,7 @@
     
     <!-- Mapa de región -->
     <url>
-        <loc>https://PokeWorlDex/app/view/mapa.html</loc>
+        <loc>https://PokeWorlDex.netlify.app/app/view/mapa.html</loc>
         <lastmod>2026-01-26</lastmod>
         <priority>0.85</priority>
         <changefreq>monthly</changefreq>
@@ -43,7 +43,7 @@
     
     <!-- Tipos Pokémon -->
     <url>
-        <loc>https://PokeWorlDex/app/view/tipos.html</loc>
+        <loc>https://PokeWorlDex.netlify.app/app/view/tipos.html</loc>
         <lastmod>2026-01-26</lastmod>
         <priority>0.75</priority>
         <changefreq>monthly</changefreq>
