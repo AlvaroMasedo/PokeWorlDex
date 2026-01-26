@@ -117,6 +117,7 @@ async function fetchStarterImages(regionSlug) {
 
             return {
                 name: data.name,
+                id: data.id,
                 image: data.sprites.other["official-artwork"].front_default,
             };
         })
@@ -139,6 +140,23 @@ async function fetchRoutesAndCities(regionData, regionSlug) {
     // Paldea: muchas “zonas” no son rutas ni cities/towns
     // (provincia/area/mesagoza etc). Si tienes diccionario, mejor, pero esto ayuda.
     const PALDEA_ALLOW = ["province", "area"];
+
+    // Paldea: allowlist de ciudades/pueblos que no siguen patrón con "city/town"
+    const PALDEA_TOWNS_ALLOW = [
+        "mesagoza",
+        "los-platos",
+        "cortondo",
+        "artazon",
+        "levincia",
+        "zapapico",
+        "medali",
+        "cascarrafa",
+        "porto-marinada",
+        "alfornada",
+        "montenevera",
+        "pokemon-league-building",
+        "cabo-poco",
+    ];
 
     // Galar: muchas ciudades no llevan City/Town
     const GALAR_TOWNS_ALLOW = [
@@ -207,6 +225,11 @@ async function fetchRoutesAndCities(regionData, regionSlug) {
             regionSlug === "galar" &&
             GALAR_TOWNS_ALLOW.some((t) => slug === t || n === t);
 
+        // Paldea towns (allowlist)
+        const isPaldeaTown =
+            regionSlug === "paldea" &&
+            PALDEA_TOWNS_ALLOW.some((t) => slug === t || n === t);
+
         // Paldea zones (province/area)
         const isPaldeaZone =
             regionSlug === "paldea" &&
@@ -217,6 +240,7 @@ async function fetchRoutesAndCities(regionData, regionSlug) {
 
         if (isRoute) return true;
         if (isGalarTown) return true;
+    if (isPaldeaTown) return true;
         if (isPaldeaZone) return true;
 
         // Si parece ciudad/pueblo pero no es cueva/mina/etc
@@ -225,10 +249,7 @@ async function fetchRoutesAndCities(regionData, regionSlug) {
         return false;
     });
 
-    // 3) Ordenar
-    filtered.sort((a, b) => a.name.localeCompare(b.name, "es"));
-
-    // 🔥 Eliminar duplicados por nombre visible (Ciudad Hauoli, etc.)
+    // 3) Eliminar duplicados por nombre visible (Ciudad Hauoli, etc.)
     const uniqueByName = [];
     const seenNames = new Set();
 
@@ -240,7 +261,44 @@ async function fetchRoutesAndCities(regionData, regionSlug) {
         }
     }
 
-    return uniqueByName;
+    // 4) Ordenar: Rutas (numéricamente) -> Pueblos -> Villas -> Ciudades
+    const routes = [];
+    const pueblos = [];
+    const villas = [];
+    const ciudades = [];
+    const otros = [];
+
+    uniqueByName.forEach((item) => {
+        const n = item.name.toLowerCase();
+        
+        if (n.includes("ruta ") || n.includes("route ")) {
+            routes.push(item);
+        } else if (n.includes("pueblo ") || n.includes(" town")) {
+            pueblos.push(item);
+        } else if (n.includes("villa ") || n.includes(" village")) {
+            villas.push(item);
+        } else if (n.includes("ciudad ") || n.includes(" city")) {
+            ciudades.push(item);
+        } else {
+            otros.push(item);
+        }
+    });
+
+    // Ordenar rutas numéricamente
+    routes.sort((a, b) => {
+        const numA = parseInt(a.name.match(/\d+/)?.[0] || "0");
+        const numB = parseInt(b.name.match(/\d+/)?.[0] || "0");
+        return numA - numB;
+    });
+
+    // Ordenar el resto alfabéticamente
+    pueblos.sort((a, b) => a.name.localeCompare(b.name, "es"));
+    villas.sort((a, b) => a.name.localeCompare(b.name, "es"));
+    ciudades.sort((a, b) => a.name.localeCompare(b.name, "es"));
+    otros.sort((a, b) => a.name.localeCompare(b.name, "es"));
+
+    // Concatenar en el orden deseado
+    return [...routes, ...pueblos, ...villas, ...ciudades, ...otros];
 }
 
 
@@ -408,10 +466,10 @@ function Region() {
                     ) : (
                         <div className="starters">
                             {starters.map((p) => (
-                                <div key={p.name} className="starter-card">
+                                <a key={p.name} href={`pokemon.html?id=${p.id}`} className="starter-card">
                                     <img src={p.image} alt={p.name} />
                                     <p>{p.name}</p>
-                                </div>
+                                </a>
                             ))}
                         </div>
                     )}
