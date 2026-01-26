@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    
+    <!--Inicio-->
+    <url>
+        <loc>https://tu-dominio.com/index.html</loc>
+        <priority>1.00</priority>
+        <changefreq>weekly</changefreq>
+    </url>
+    
+    <!--Regiones-->
+    <url>
+        <loc>https://tu-dominio.com/app/view/regions.html</loc>
+        <priority>0.80</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+    <!--Pokede-->
+    <url>
+        <loc>https://tu-dominio.com/app/view/pokedex.html</loc>
+        <priority>0.90</priority>
+        <changefreq>weekly</changefreq>
+    </url>
+    
+    <!--Mapa-->
+    <url>
+        <loc>https://tu-dominio.com/app/view/mapa.html</loc>
+        <priority>0.60</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+</urlset>

@@ -152,5 +152,36 @@ window.PokemonTemplate = function PokemonTemplate() {
   );
 };
 
+
+//AÑADIR ETIQUETAS META
 const root = document.getElementById("pokemon-root");
 ReactDOM.createRoot(root).render(<window.PokemonTemplate />);
+
+
+document.title = `#${pokemon.id} ${pokemon.name} | PokeWorlDex`;
+
+const setMeta = (nameOrProp, value) => {
+  const isProp = nameOrProp.startsWith("og:");
+  const selector = isProp
+    ? `meta[property="${nameOrProp}"]`
+    : `meta[name="${nameOrProp}"]`;
+
+  let tag = document.querySelector(selector);
+  if (!tag) {
+    tag = document.createElement("meta");
+    if (isProp) tag.setAttribute("property", nameOrProp);
+    else tag.setAttribute("name", nameOrProp);
+    document.head.appendChild(tag);
+  }
+  tag.setAttribute("content", value);
+};
+
+setMeta("description", description || `Ficha de ${pokemon.name} en español.`);
+setMeta("og:title", `#${pokemon.id} ${pokemon.name} | PokeWorlDex`);
+setMeta("og:description", description || `Tipos y evolución de ${pokemon.name}.`);
+setMeta("og:image", pokemon.sprites.other["official-artwork"].front_default);
+setMeta("og:url", window.location.href);
+setMeta("twitter:card", "summary_large_image");
+setMeta("twitter:title", `#${pokemon.id} ${pokemon.name} | PokeWorlDex`);
+setMeta("twitter:description", description || `Tipos y evolución de ${pokemon.name}.`);
+setMeta("twitter:image", pokemon.sprites.other["official-artwork"].front_default);

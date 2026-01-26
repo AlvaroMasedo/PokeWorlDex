@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Disallow: /app/view/login.html
+Disallow: /app/view/signup.html
+
+Disallow: /lib/
+Disallow: /resources/js/
+
+Sitemap: https://PokeWorlDex/sitemap.xml
