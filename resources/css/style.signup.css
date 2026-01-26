@@ -1,9 +1,8 @@
 body {
+    background: url('../../img/login/fondo.webp') center/cover no-repeat;
+    background-attachment: fixed;
     font-family: 'Quicksand', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .name {
@@ -31,16 +30,27 @@ h1 {
 }
 
 .form {
-    text-align: center;
+    text-align: left;
     box-shadow: 0 10px 40px rgba(30, 60, 90, 0.2);
     border-radius: 20px;
     height: auto;
     width: 100%;
-    max-width: 500px;
-    margin: 40px auto;
+    max-width: 900px;
+    margin: 40px auto 40px auto;
     background: white;
     padding: 40px;
     backdrop-filter: blur(10px);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.form-grid label {
+    text-align: left;
 }
 
 .input {
@@ -76,6 +86,10 @@ h1 {
     text-align: left;
 }
 
+.form > h1 {
+    text-align: center;
+}
+
 .btns button {
     margin: 12px auto;
     width: 100%;
@@ -103,6 +117,7 @@ h1 {
 p {
     font-family: Quicksand, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     font-weight: 500;
+    text-align: center;
 }
 
 a {

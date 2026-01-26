@@ -7,7 +7,7 @@ function Header() {
 
             <ul className="nav">
                 <li><a title="Regiones" href="/app/view/regions.html">Regiones</a></li>
-                <li><a title="Tabla de Tipos" href="/app/view/tablatipos.html">Tabla de tipos</a></li>
+                <li><a title="Tabla de Tipos" href="/app/view/tipos.html">Tabla de tipos</a></li>
                 <li><a title="Pokédex" href="/app/view/pokedex.html">Pokédex</a></li>
             </ul>
 

@@ -6,18 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description" content="PokeWorlDex: Pokédex por regiones, detalles de Pokémon, tipos y recursos en español.">
-    <!--TENEMOS QUE PONER EL LINK DEL DOMINIO AQUI ABAJO-->
     <link rel="canonical" href="ALVARO TENEMOS QUE PONER EL LINK DEL DOMINIO AQUI LUEGO">
     <meta name="robots" content="index,follow">
     <meta property="og:title" content="PokeWorlDex">
     <meta property="og:description" content="Pokédex por regiones y fichas de Pokémon en español.">
-    
-    <!--TENEMOS QUE PONER EL LINK DEL DOMINIO AQUI ABAJO-->
     <meta property="og:url" content="https">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://tu-dominio.com/resources/img/og-cover.png">
 
-    <title>PokeWorlDex</title>
+    <title>PokeWorlDex - Tu Pokédex Interactiva</title>
     <link rel="stylesheet" href="resources/css/style.index.css" />
     <link rel="stylesheet" href="resources/css/style.header.css"/>
     <link rel="stylesheet" href="resources/css/style.footer.css"/>
@@ -33,23 +30,61 @@
 
 <body>
     <div id="header-root"></div>
-    <main>
-        <div class="parent">
-            <div class="div1">
-                <img src="resources/img/mapa.webp" alt="Pokemon Map"><br>
-                <a title="Mapa" href="app/view/regions.html" class="btn">Mapa</a>
+    
+    <main class="main-container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">PokeWorlDex</h1>
+                <p class="hero-subtitle">Explora el mundo Pokémon en profundidad</p>
             </div>
+        </section>
 
-            <div class="div2">
-                <img src="resources/img/Rotom-pokedex.webp" alt="Pokedex Rotom Icon"><br>
-                <a title="Pokédex" href="app/view/pokedex.html" class="btn">Pokédex</a>
-            </div>
+        <!-- Features Grid -->
+        <section class="features-section">
+            <div class="features-grid">
+                <article class="feature-card">
+                    <div class="feature-image-wrapper">
+                        <img src="resources/img/mapa.webp" alt="Mapa de regiones Pokémon" class="feature-image">
+                    </div>
+                    <div class="feature-content">
+                        <h2 class="feature-title">Mapa de Regiones</h2>
+                        <p class="feature-description">Descubre todas las regiones de Pokémon y sus Pokémon exclusivos</p>
+                        <a href="app/view/regions.html" class="cta-button">Explorar Mapa</a>
+                    </div>
+                </article>
 
-            <div class="div4">
-                <img src="resources/img/Type_Fire.webp" alt="Fire type"><br>
-                <a title="Tabla de tipos" href="#" class="btn">Tabla de Tipos</a>
+                <article class="feature-card">
+                    <div class="feature-image-wrapper">
+                        <img src="resources/img/Rotom-pokedex.webp" alt="Pokédex Rotom" class="feature-image">
+                    </div>
+                    <div class="feature-content">
+                        <h2 class="feature-title">Pokédex Completa</h2>
+                        <p class="feature-description">Consulta fichas detalladas de todos los Pokémon conocidos</p>
+                        <a href="app/view/pokedex.html" class="cta-button">Ver Pokédex</a>
+                    </div>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-image-wrapper">
+                        <img src="resources/img/Type_Fire.webp" alt="Tipos de Pokémon" class="feature-image">
+                    </div>
+                    <div class="feature-content">
+                        <h2 class="feature-title">Tabla de Tipos</h2>
+                        <p class="feature-description">Analiza ventajas, desventajas y compatibilidades de tipos</p>
+                        <a href="app/view/tipos.html" class="cta-button">Ver Tipos</a>
+                    </div>
+                </article>
             </div>
-        </div>
+        </section>
+
+        <!-- Info Section -->
+        <section class="info-section">
+            <div class="info-content">
+                <h2 class="info-title">¿Qué es PokeWorlDex?</h2>
+                <p class="info-text">Tu guía completa del universo Pokémon. Accede a información detallada sobre todas las generaciones, regiones, Pokémon y tipos en un único lugar. Diseñado para entretenimiento e información.</p>
+            </div>
+        </section>
     </main>
 
     <div id="footer-root"></div>
@@ -65,4 +100,5 @@
     <script type="text/babel" src="resources/react/header.jsx"></script>
     <script type="text/babel" src="resources/react/footer.jsx"></script>
 </body>
+
 </html>

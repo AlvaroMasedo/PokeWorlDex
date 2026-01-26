@@ -7,6 +7,18 @@ const { useEffect, useMemo, useState } = React;
 
 const REGION_NAME_ES_OVERRIDE = { unova: "Teselia" };
 
+const REGION_PROFESSOR_IMAGE = {
+    kanto: "oak",
+    johto: "elm",
+    hoenn: "abedul",
+    sinnoh: "serbal",
+    unova: "encina",
+    kalos: "cipres",
+    alola: "kukui",
+    galar: "magnnolia",
+    paldea: "turoada",
+};
+
 const REGION_PROFESSOR = {
     kanto: "Profesor Oak",
     johto: "Profesor Elm",
@@ -29,6 +41,42 @@ const REGION_STARTERS = {
     alola: ["rowlet", "litten", "popplio"],
     galar: ["grookey", "scorbunny", "sobble"],
     paldea: ["sprigatito", "fuecoco", "quaxly"],
+};
+
+/* Traducción de métodos de encuentro */
+const ENCOUNTER_METHOD_NAMES = {
+    "walk": "Caminando",
+    "old-rod": "Caña Vieja",
+    "good-rod": "Caña Buena",
+    "super-rod": "Caña Excelente",
+    "surf": "Surf",
+    "fish": "Pescando",
+    "headbutt": "Cabezazo",
+    "gift": "Regalo",
+    "egg": "Huevo",
+    "roaming": "Errante",
+    "gift-egg": "Regalo (Huevo)",
+    "stationary": "Estacionario",
+    "static": "Estático",
+    "trade": "Intercambio",
+    "breeding": "Crianza",
+    "dark-grass": "Hierba Oscura",
+    "grass": "Hierba",
+    "tall-grass": "Hierba Alta",
+    "cave": "Cueva",
+    "surfing": "Surfear",
+    "rock-smash": "Golpe Roca",
+    "horde": "Horda",
+    "bush": "Arbusto",
+    "water-surface": "Superficie del Agua",
+    "ripple": "Agitación del Agua",
+    "shaking-grass": "Hierba Agitada",
+    "shaking-spots": "Manchas que Tiemblan",
+    "nest": "Nido",
+    "nests": "Nidos",
+    "safari-zone": "Safari",
+    "max-raid-battle": "Incursión Dynamax",
+    "symbol-gift": "Regalo Especial",
 };
 
 /* =========================
@@ -72,6 +120,10 @@ function getRegionProfessor(regionSlug) {
 
 function getRegionStarters(regionSlug) {
     return REGION_STARTERS[regionSlug] || [];
+}
+
+function translateEncounterMethod(methodName) {
+    return ENCOUNTER_METHOD_NAMES[methodName] || methodName.charAt(0).toUpperCase() + methodName.slice(1).replaceAll("-", " ");
 }
 
 /* =========================
@@ -141,23 +193,6 @@ async function fetchRoutesAndCities(regionData, regionSlug) {
     // (provincia/area/mesagoza etc). Si tienes diccionario, mejor, pero esto ayuda.
     const PALDEA_ALLOW = ["province", "area"];
 
-    // Paldea: allowlist de ciudades/pueblos que no siguen patrón con "city/town"
-    const PALDEA_TOWNS_ALLOW = [
-        "mesagoza",
-        "los-platos",
-        "cortondo",
-        "artazon",
-        "levincia",
-        "zapapico",
-        "medali",
-        "cascarrafa",
-        "porto-marinada",
-        "alfornada",
-        "montenevera",
-        "pokemon-league-building",
-        "cabo-poco",
-    ];
-
     // Galar: muchas ciudades no llevan City/Town
     const GALAR_TOWNS_ALLOW = [
         "postwick", "wedgehurst", "motostoke", "turffield", "hulbury",
@@ -225,11 +260,6 @@ async function fetchRoutesAndCities(regionData, regionSlug) {
             regionSlug === "galar" &&
             GALAR_TOWNS_ALLOW.some((t) => slug === t || n === t);
 
-        // Paldea towns (allowlist)
-        const isPaldeaTown =
-            regionSlug === "paldea" &&
-            PALDEA_TOWNS_ALLOW.some((t) => slug === t || n === t);
-
         // Paldea zones (province/area)
         const isPaldeaZone =
             regionSlug === "paldea" &&
@@ -240,7 +270,6 @@ async function fetchRoutesAndCities(regionData, regionSlug) {
 
         if (isRoute) return true;
         if (isGalarTown) return true;
-    if (isPaldeaTown) return true;
         if (isPaldeaZone) return true;
 
         // Si parece ciudad/pueblo pero no es cueva/mina/etc
@@ -249,7 +278,10 @@ async function fetchRoutesAndCities(regionData, regionSlug) {
         return false;
     });
 
-    // 3) Eliminar duplicados por nombre visible (Ciudad Hauoli, etc.)
+    // 3) Ordenar
+    filtered.sort((a, b) => a.name.localeCompare(b.name, "es"));
+
+    // 🔥 Eliminar duplicados por nombre visible (Ciudad Hauoli, etc.)
     const uniqueByName = [];
     const seenNames = new Set();
 
@@ -261,47 +293,83 @@ async function fetchRoutesAndCities(regionData, regionSlug) {
         }
     }
 
-    // 4) Ordenar: Rutas (numéricamente) -> Pueblos -> Villas -> Ciudades
-    const routes = [];
-    const pueblos = [];
-    const villas = [];
-    const ciudades = [];
-    const otros = [];
-
-    uniqueByName.forEach((item) => {
-        const n = item.name.toLowerCase();
-        
-        if (n.includes("ruta ") || n.includes("route ")) {
-            routes.push(item);
-        } else if (n.includes("pueblo ") || n.includes(" town")) {
-            pueblos.push(item);
-        } else if (n.includes("villa ") || n.includes(" village")) {
-            villas.push(item);
-        } else if (n.includes("ciudad ") || n.includes(" city")) {
-            ciudades.push(item);
-        } else {
-            otros.push(item);
-        }
-    });
-
-    // Ordenar rutas numéricamente
-    routes.sort((a, b) => {
-        const numA = parseInt(a.name.match(/\d+/)?.[0] || "0");
-        const numB = parseInt(b.name.match(/\d+/)?.[0] || "0");
-        return numA - numB;
-    });
-
-    // Ordenar el resto alfabéticamente
-    pueblos.sort((a, b) => a.name.localeCompare(b.name, "es"));
-    villas.sort((a, b) => a.name.localeCompare(b.name, "es"));
-    ciudades.sort((a, b) => a.name.localeCompare(b.name, "es"));
-    otros.sort((a, b) => a.name.localeCompare(b.name, "es"));
-
-    // Concatenar en el orden deseado
-    return [...routes, ...pueblos, ...villas, ...ciudades, ...otros];
+    return uniqueByName;
 }
 
+// Obtener detalles de una localización (encuentros, etc)
+async function fetchLocationDetails(locationSlug, regionSlug, gameVersions) {
+    try {
+        const locationRes = await fetch(`https://pokeapi.co/api/v2/location/${locationSlug}`);
+        if (!locationRes.ok) throw new Error(`No se encontró localización: ${locationSlug}`);
+        const locationData = await locationRes.json();
 
+        // Casos especiales (regiones sin datos en PokeAPI)
+        if (["galar", "paldea"].includes(regionSlug)) {
+            return {
+                name: locationData.names?.find(n => n.language.name === "es")?.name || locationSlug,
+                noEncountersData: true,
+                encounters: {}
+            };
+        }
+
+        // Obtener área de la localización
+        const areaUrl = locationData.areas && locationData.areas.length > 0 
+            ? locationData.areas[0].url 
+            : null;
+
+        if (!areaUrl) {
+            return {
+                name: locationData.names?.find(n => n.language.name === "es")?.name || locationSlug,
+                encounters: {}
+            };
+        }
+
+        const areaRes = await fetch(areaUrl);
+        if (!areaRes.ok) throw new Error(`No se encontró área: ${areaUrl}`);
+        const areaData = await areaRes.json();
+
+        // Procesar encuentros por método
+        const encountersMap = {};
+
+        if (areaData.pokemon_encounters && Array.isArray(areaData.pokemon_encounters)) {
+            for (const enc of areaData.pokemon_encounters) {
+                const pokemonRes = await fetch(enc.pokemon.url);
+                if (!pokemonRes.ok) continue;
+                const pokemonData = await pokemonRes.json();
+
+                const pokemonInfo = {
+                    id: pokemonData.id,
+                    name: pokemonData.name,
+                    sprite: pokemonData.sprites.front_default
+                };
+
+                for (const detail of enc.version_details) {
+                    if (!gameVersions.includes(detail.version.name)) continue;
+
+                    for (const method of detail.encounter_details) {
+                        const methodName = method.method.name.replaceAll("-", " ");
+                        
+                        if (!encountersMap[methodName]) {
+                            encountersMap[methodName] = [];
+                        }
+
+                        if (!encountersMap[methodName].some(p => p.id === pokemonInfo.id)) {
+                            encountersMap[methodName].push(pokemonInfo);
+                        }
+                    }
+                }
+            }
+        }
+
+        return {
+            name: locationData.names?.find(n => n.language.name === "es")?.name || locationSlug,
+            encounters: encountersMap
+        };
+    } catch (e) {
+        console.error("Error cargando localización:", e);
+        return null;
+    }
+}
 
 /* =========================
    Component
@@ -327,8 +395,18 @@ function Region() {
     const [loadingStarters, setLoadingStarters] = useState(true);
 
     // Puntos de interés (rutas+ciudades)
-    const [interestPoints, setInterestPoints] = useState([]);
+    const [interestPoints, setInterestPoints] = useState({ routes: [], cities: [] });
     const [loadingPoints, setLoadingPoints] = useState(true);
+
+    // Localización seleccionada
+    const [selectedLocation, setSelectedLocation] = useState(null);
+    const [loadingLocation, setLoadingLocation] = useState(false);
+
+    // Versiones de juegos (slugs sin traducir para filtrar encuentros)
+    const [gameVersions, setGameVersions] = useState([]);
+
+    // Ref para scroll automático
+    const infoSectionRef = React.useRef(null);
 
     // 1) Cargar región
     useEffect(() => {
@@ -357,10 +435,29 @@ function Region() {
             try {
                 setLoadingPoints(true);
                 const points = await fetchRoutesAndCities(regionData, regionSlug);
-                setInterestPoints(points);
+                
+                // Separar rutas de ciudades/pueblos
+                const routes = points.filter(p => 
+                    p.name.toLowerCase().includes('ruta') || 
+                    p.name.toLowerCase().includes('route') ||
+                    p.slug.toLowerCase().includes('route')
+                ).sort((a, b) => {
+                    // Extraer números de las rutas
+                    const numA = parseInt(a.name.match(/\d+/)?.[0] || '0');
+                    const numB = parseInt(b.name.match(/\d+/)?.[0] || '0');
+                    return numA - numB;
+                });
+                
+                const cities = points.filter(p => 
+                    !p.name.toLowerCase().includes('ruta') && 
+                    !p.name.toLowerCase().includes('route') &&
+                    !p.slug.toLowerCase().includes('route')
+                );
+                
+                setInterestPoints({ routes, cities });
             } catch (e) {
                 console.error(e);
-                setInterestPoints([]);
+                setInterestPoints({ routes: [], cities: [] });
             } finally {
                 setLoadingPoints(false);
             }
@@ -377,12 +474,16 @@ function Region() {
                 setLoadingGames(true);
                 const slugs = await fetchRegionGameSlugs(regionSlug);
 
+                // Guardar los slugs sin traducir para filtrar encuentros
+                setGameVersions(slugs);
+
                 // Traducción si existe tu librería global
                 const translated = window.translateGameNames ? window.translateGameNames(slugs) : slugs;
                 setGames(translated);
             } catch (e) {
                 console.error(e);
                 setGames([]);
+                setGameVersions([]);
             } finally {
                 setLoadingGames(false);
             }
@@ -409,6 +510,20 @@ function Region() {
         run();
     }, [regionSlug]);
 
+    // Manejar click en una localización
+    const handleLocationClick = async (locationSlug, locationName) => {
+        setLoadingLocation(true);
+        const details = await fetchLocationDetails(locationSlug, regionSlug, gameVersions);
+        if (details) {
+            setSelectedLocation({ slug: locationSlug, ...details });
+            // Scroll automático a la sección de abajo
+            setTimeout(() => {
+                infoSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+        setLoadingLocation(false);
+    };
+
     if (loadingRegion) return <div>Cargando...</div>;
     if (errorRegion) return <div>Error: {errorRegion}</div>;
     if (!regionData) return <div>No se encontró información para la región especificada.</div>;
@@ -422,21 +537,40 @@ function Region() {
         <main>
             <div className="parent" style={{ backgroundImage: `url('${bgUrl}')` }}>
                 <nav>
-                    <h3>Puntos de interés</h3>
-
+                    <h3>Rutas y Cuevas</h3>
                     {loadingPoints ? (
-                        <p>Cargando rutas y ciudades...</p>
+                        <p>Cargando rutas...</p>
                     ) : (
                         <ul className="interest-list">
-                            {interestPoints.map((p) => (
+                            {interestPoints.routes.map((p) => (
                                 <li key={p.slug}>
-                                    <a href={`zona.html?location=${p.slug}`} className="button">
+                                    <button 
+                                        onClick={() => handleLocationClick(p.slug, p.name)} 
+                                        className="button"
+                                    >
                                         {p.name}
-                                    </a>
+                                    </button>
                                 </li>
                             ))}
                         </ul>
+                    )}
 
+                    <h3 className="nav-subtitle">Ciudades y Pueblos</h3>
+                    {loadingPoints ? (
+                        <p>Cargando ciudades...</p>
+                    ) : (
+                        <ul className="interest-list">
+                            {interestPoints.cities.map((p) => (
+                                <li key={p.slug}>
+                                    <button 
+                                        onClick={() => handleLocationClick(p.slug, p.name)} 
+                                        className="button"
+                                    >
+                                        {p.name}
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
                     )}
                 </nav>
 
@@ -448,18 +582,33 @@ function Region() {
                     {loadingGames ? (
                         <p>Cargando juegos...</p>
                     ) : (
-                        <ul>
+                        <div className="games-container">
                             {games.map((game) => (
-                                <li key={game}>{game}</li>
+                                <div key={game} className="game-item">
+                                    {game}
+                                </div>
                             ))}
-                        </ul>
+                        </div>
                     )}
 
                     <h3>Profesor Pokémon</h3>
-                    <p>{getRegionProfessor(regionSlug)}</p>
-
-                    <h3>Pokédex Nacional</h3>
-
+                    <div className="professor-section">
+                        <div className="professor-image-wrapper">
+                            <img 
+                                src={`../../resources/img/professors/${REGION_PROFESSOR_IMAGE[regionSlug]}.webp`} 
+                                alt={getRegionProfessor(regionSlug)}
+                                onError={(e) => {
+                                    e.target.style.display = 'none';
+                                }}
+                            />
+                        </div>
+                        <div className="professor-info">
+                            <h4>
+                                {getRegionProfessor(regionSlug)}
+                            </h4>
+                            <p>Profesor de la región</p>
+                        </div>
+                    </div>
                     <h3>Pokémon Iniciales</h3>
                     {loadingStarters ? (
                         <p>Cargando iniciales...</p>
@@ -476,9 +625,62 @@ function Region() {
                 </div>
             </div>
 
-            <div className="info">
-                <h2>Pueblo paleta</h2>
-                <p>Información sobre Pueblo Paleta.</p>
+            <div className="info" ref={infoSectionRef}>
+                {loadingLocation ? (
+                    <p>Cargando información de la localización...</p>
+                ) : selectedLocation ? (
+                    <div>
+                        <h2>{selectedLocation.name} - {displayName}</h2>
+
+                        {selectedLocation.noEncountersData ? (
+                            <div className="alert-box">
+                                <h3>ℹ️ Datos de Pokémon no disponibles</h3>
+                                <p>
+                                    Lamentablemente, la PokeAPI no proporciona datos de encuentros de Pokémon para <strong>{displayName}</strong>. 
+                                    Esta es una limitación de la API, ya que {displayName} es una región más reciente con una estructura de juego diferente.
+                                </p>
+                                <p>
+                                    Para mostrar los Pokémon de esta región, sería necesario usar una fuente de datos alternativa como Bulbapedia o una base de datos especializada en juegos de Pokémon modernos.
+                                </p>
+                            </div>
+                        ) : Object.keys(selectedLocation.encounters).length > 0 ? (
+                            <div className="encounters-section">
+                                <h3>Pokémon Salvajes que Aparecen</h3>
+                                {Object.entries(selectedLocation.encounters).map(([method, pokemons]) => (
+                                    <div key={method} className="encounter-method">
+                                        <h4 className="method-header">
+                                            {translateEncounterMethod(method)}
+                                        </h4>
+                                        <div className="pokemon-grid">
+                                            {pokemons.map((pokemon) => (
+                                                <a
+                                                    key={pokemon.id}
+                                                    href={`pokemon.html?id=${pokemon.id}`}
+                                                    className="pokemon-card"
+                                                >
+                                                    <img
+                                                        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
+                                                        alt={pokemon.name}
+                                                    />
+                                                    <p>{pokemon.name}</p>
+                                                </a>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <p>No hay información de Pokémon salvajes para esta localización.</p>
+                        )}
+                    </div>
+                ) : (
+                    <div className="info-empty-state">
+                        <h2>Selecciona una localización</h2>
+                        <p>
+                            Haz clic en una ruta, ciudad o pueblo para ver información detallada sobre los Pokémon salvajes que aparecen.
+                        </p>
+                    </div>
+                )}
             </div>
         </main>
     );

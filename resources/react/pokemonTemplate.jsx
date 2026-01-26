@@ -103,22 +103,31 @@ window.PokemonTemplate = function PokemonTemplate() {
   return (
     <div className="divPoke">
       <div className="divPokeDesc">
-        <img
-          src={pokemon.sprites.other["official-artwork"].front_default}
-          alt={pokemon.name}
-          style={{ width: "38.3vh" }}
-          className="poke"
-        />
+        <div className="pokeImageSection">
+          <img
+            src={pokemon.sprites.other["official-artwork"].front_default}
+            alt={pokemon.name}
+            className="poke"
+          />
+          <div className="types">
+            {pokemon.types.map(t => (
+              <p key={t.type.name} className={t.type.name}>
+                {window.translateTypes([t.type.name])[0]}
+              </p>
+            ))}
+          </div>
+        </div>
         <div className="pokeText">
-          <h1 className="pokeTitle">
-            <span className="pokeId">#{pokemon.id}</span>{" "}
-            <span className="pokeName">{pokemon.name}</span>
-          </h1>
+          <div className="pokeTitle">
+            <span className="pokeId">#{pokemon.id}</span>
+            <h1 className="pokeName">{pokemon.name}</h1>
+          </div>
+
           <p>{description}</p>
+
           {evolution.length > 1 && (
             <div className="evolution">
               <h3>Cadena evolutiva</h3>
-
               <div className="evoList">
                 {evolution.map(e => (
                   <img
@@ -127,22 +136,13 @@ window.PokemonTemplate = function PokemonTemplate() {
                     alt={e.name}
                     title={e.name}
                     className="evoImg"
-                    onClick={() => {window.location.href = `pokemon.html?id=${e.id}`;}}
+                    onClick={() => { window.location.href = `pokemon.html?id=${e.id}`; }}
                   />
                 ))}
               </div>
             </div>
           )}
         </div>
-      </div>
-
-
-      <div className="types">
-        {pokemon.types.map(t => (
-          <p className={t.type.name}>
-            {window.translateTypes([t.type.name])[0]}
-          </p>
-        ))}
       </div>
 
       <button className="btnPoke" onClick={() => window.history.back()}>
@@ -152,32 +152,5 @@ window.PokemonTemplate = function PokemonTemplate() {
   );
 };
 
-
-//AÑADIR ETIQUETAS META
 const root = document.getElementById("pokemon-root");
 ReactDOM.createRoot(root).render(<window.PokemonTemplate />);
-
-
-document.title = `#${pokemon.id} ${pokemon.name} | PokeWorlDex`;
-
-const setMeta = (nameOrProp, value) => {
-  const isProp = nameOrProp.startsWith("og:");
-  const selector = isProp
-    ? `meta[property="${nameOrProp}"]`
-    : `meta[name="${nameOrProp}"]`;
-
-  let tag = document.querySelector(selector);
-  if (!tag) {
-    tag = document.createElement("meta");
-    if (isProp) tag.setAttribute("property", nameOrProp);
-    else tag.setAttribute("name", nameOrProp);
-    document.head.appendChild(tag);
-  }
-  tag.setAttribute("content", value);
-};
-
-setMeta("description", description || `Ficha de ${pokemon.name} en español.`);
-setMeta("og:title", `#${pokemon.id} ${pokemon.name} | PokeWorlDex`);
-setMeta("og:description", description || `Tipos y evolución de ${pokemon.name}.`);
-setMeta("og:image", pokemon.sprites.other["official-artwork"].front_default);
-setMeta("og:url", window.location.href);
