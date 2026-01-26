@@ -1,32 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
-    <!--Inicio-->
+    <!-- Página principal -->
     <url>
-        <loc>https://tu-dominio.com/index.html</loc>
+        <loc>https://PokeWorlDex/index.html</loc>
+        <lastmod>2026-01-26</lastmod>
         <priority>1.00</priority>
         <changefreq>weekly</changefreq>
     </url>
     
-    <!--Regiones-->
+    <!-- Sección de Regiones -->
     <url>
-        <loc>https://tu-dominio.com/app/view/regions.html</loc>
-        <priority>0.80</priority>
+        <loc>https://PokeWorlDex/app/view/regions.html</loc>
+        <lastmod>2026-01-26</lastmod>
+        <priority>0.90</priority>
         <changefreq>monthly</changefreq>
     </url>
     
-    <!--Pokede-->
+    <!-- Pokédex completa -->
     <url>
-        <loc>https://tu-dominio.com/app/view/pokedex.html</loc>
-        <priority>0.90</priority>
+        <loc>https://PokeWorlDex/app/view/pokedex.html</loc>
+        <lastmod>2026-01-26</lastmod>
+        <priority>0.95</priority>
         <changefreq>weekly</changefreq>
     </url>
     
-    <!--Mapa-->
+    <!-- Página individual de Pokémon -->
     <url>
-        <loc>https://tu-dominio.com/app/view/mapa.html</loc>
-        <priority>0.60</priority>
+        <loc>https://PokeWorlDex/app/view/pokemon.html</loc>
+        <lastmod>2026-01-26</lastmod>
+        <priority>0.80</priority>
+        <changefreq>weekly</changefreq>
+    </url>
+    
+    <!-- Mapa de región -->
+    <url>
+        <loc>https://PokeWorlDex/app/view/mapa.html</loc>
+        <lastmod>2026-01-26</lastmod>
+        <priority>0.85</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+    <!-- Tipos Pokémon -->
+    <url>
+        <loc>https://PokeWorlDex/app/view/tipos.html</loc>
+        <lastmod>2026-01-26</lastmod>
+        <priority>0.75</priority>
         <changefreq>monthly</changefreq>
     </url>
     

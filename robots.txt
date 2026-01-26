@@ -1,10 +1,19 @@
+# Robots.txt para PokeWorlDex
+# Permite el rastreo de todo el contenido público excepto áreas privadas
+
 User-agent: *
 Allow: /
+Allow: /resources/css/
+Allow: /resources/img/
+Allow: /resources/react/
 
+# Bloquear páginas de autenticación
 Disallow: /app/view/login.html
 Disallow: /app/view/signup.html
 
+# Bloquear archivos internos y scripts
 Disallow: /lib/
 Disallow: /resources/js/
 
+# Sitemap
 Sitemap: https://PokeWorlDex/sitemap.xml
