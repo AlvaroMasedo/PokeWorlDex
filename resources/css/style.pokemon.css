@@ -12,6 +12,29 @@ h1 {
 
 body {
     background-color: #dcf0ff;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.evolution {
+    margin-top: 15px;
+}
+
+.evoList {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.evoImg {
+    width: 100px;
+    transition: transform 0.2s ease;
+    background-color: #d3e1ff;
+    border: 15px solid #d3e1ff;
+    border-radius: 15px;
+}
+
+.evoImg:hover {
+    transform: scale(1.1);
 }
 
 .btnPoke {
@@ -26,6 +49,208 @@ body {
     transition: 0.3s ease;
 }
 
+.divPoke {
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
 .btnPoke:hover {
     background-color: rgb(171, 171, 255);
+}
+
+.divPokeDesc {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.pokeTitle {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.pokeId {
+    font-weight: 700;
+}
+
+.pokeName {
+    text-transform: capitalize;
+}
+
+.pokeText {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+}
+
+.types {
+    display: flex;
+    gap: 15px;
+    flex-direction: row;
+    font-weight: bold;
+    margin-left: 1%;
+    color: white;
+}
+
+.normal {
+    width: 20vh;
+    height: 4vh;
+    line-height: 4vh;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #b8b5a7;
+}
+
+.grass {
+    width: 20vh;
+    height: 4vh;
+    line-height: 4vh;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #6cbe2f;
+}
+
+.fire {
+    width: 20vh;
+    height: 4vh;
+    line-height: 4vh;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #f07f2f;
+}
+
+.water {
+    width: 20vh;
+    height: 4vh;
+    line-height: 4vh;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #2c8eef;
+}
+
+.electric {
+    width: 20vh;
+    height: 4vh;
+    line-height: 4vh;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #fbc02e;
+}
+
+.ice {
+    width: 20vh;
+    height: 4vh;
+    line-height: 4vh;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #5be3e3;
+}
+
+.fighting {
+    width: 20vh;
+    height: 4vh;
+    line-height: 4vh;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #773823;
+}
+
+.poison {
+    width: 20vh;
+    height: 4vh;
+    line-height: 4vh;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #b156a0;
+}
+
+.ground {
+    width: 20vh;
+    height: 4vh;
+    line-height: 4vh;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #cfae53;
+}
+
+.flying {
+    width: 20vh;
+    height: 4vh;
+    line-height: 4vh;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #99aaf4;
+}
+
+.psychic {
+    width: 20vh;
+    height: 4vh;
+    line-height: 4vh;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #fc71a3;
+}
+
+.bug {
+    width: 20vh;
+    height: 4vh;
+    line-height: 4vh;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #aab91e;
+}
+
+.rock {
+    width: 20vh;
+    height: 4vh;
+    line-height: 4vh;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #bca358;
+}
+
+.ghost {
+    width: 20vh;
+    height: 4vh;
+    line-height: 4vh;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #6262b4;
+}
+
+.dragon {
+    width: 20vh;
+    height: 4vh;
+    line-height: 4vh;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #7059d6;
+}
+
+.dark {
+    width: 20vh;
+    height: 4vh;
+    line-height: 4vh;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #715847;
+}
+
+.steel {
+    width: 20vh;
+    height: 4vh;
+    line-height: 4vh;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #a9a9c3;
+}
+
+.fairy {
+    width: 20vh;
+    height: 4vh;
+    line-height: 4vh;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #f4b0f5;
 }
