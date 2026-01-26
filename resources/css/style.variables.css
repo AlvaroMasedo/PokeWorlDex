@@ -7,7 +7,7 @@
 :root {
     /* ==================== Colors ==================== */
     
-    /* Primarios */
+    /* Primaris */
     --color-primary: #667eea;
     --color-primary-dark: #764ba2;
     --color-primary-light: #8b9ff3;
@@ -18,13 +18,13 @@
     --color-pokemon-bg: #e8f1f8;
     --color-pokemon-bg-light: #f0f5f9;
     
-    /* Estados */
+    /* Estats */
     --color-success: #4caf50;
     --color-warning: #ff9800;
     --color-error: #f44336;
     --color-info: #2196f3;
     
-    /* Tipos Pokémon */
+    /* Tipus Pokémon */
     --type-normal: #A8A878;
     --type-fire: #F08030;
     --type-water: #6890F0;
@@ -49,16 +49,16 @@
     --color-text-secondary: #333;
     --color-text-light: #666;
     
-    /* Backgrounds */
+    /* Fons */
     --color-bg-white: #ffffff;
     --color-bg-light: #f9f9f9;
     --color-bg-card: #ffffff;
     
-    /* Borders */
+    /* Vores */
     --color-border: #ddd;
     --color-border-light: #e0e7ff;
     
-    /* ==================== Typography ==================== */
+    /* ==================== Tipografia ==================== */
     
     --font-family-main: "Quicksand", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     --font-family-pokemon: "Pokemon Solid", "Quicksand", sans-serif;
@@ -79,7 +79,7 @@
     --font-weight-bold: 700;
     --font-weight-extrabold: 900;
     
-    /* ==================== Spacing ==================== */
+    /* ==================== Espaiat ==================== */
     
     --spacing-xs: 4px;
     --spacing-sm: 8px;
@@ -90,7 +90,7 @@
     --spacing-3xl: 30px;
     --spacing-4xl: 40px;
     
-    /* ==================== Border Radius ==================== */
+    /* ==================== Radi de vora ==================== */
     
     --radius-sm: 4px;
     --radius-md: 8px;
@@ -98,21 +98,21 @@
     --radius-xl: 15px;
     --radius-full: 50px;
     
-    /* ==================== Shadows ==================== */
+    /* ==================== Ombres ==================== */
     
     --shadow-sm: 0 2px 8px rgba(30, 60, 90, 0.1);
     --shadow-md: 0 4px 15px rgba(30, 60, 90, 0.12);
     --shadow-lg: 0 8px 30px rgba(30, 60, 90, 0.12);
     --shadow-xl: 0 16px 50px rgba(91, 143, 199, 0.25);
     
-    /* ==================== Transitions ==================== */
+    /* ==================== Transicions ==================== */
     
     --transition-fast: 0.2s ease;
     --transition-base: 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
     --transition-slow: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Gradientes reutilizables */
+/* Gradients reutilitzables */
 .gradient-pokemon {
     background: linear-gradient(135deg, var(--color-pokemon-blue) 0%, var(--color-pokemon-blue-dark) 100%);
 }

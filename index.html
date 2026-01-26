@@ -10,7 +10,7 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://PokeWorlDex/index.html">
     
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph / Facebook (enllaços socials) -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="PokeWorlDex - Tu Pokédex Interactiva en Español">
     <meta property="og:description" content="La Pokédex más completa en español. Explora regiones, fichas de Pokémon, tipos y evoluciones.">
@@ -18,7 +18,7 @@
     <meta property="og:image" content="https://PokeWorlDex/resources/img/og-cover.png">
     <meta property="og:locale" content="es_ES">
     
-    <!-- Twitter Card -->
+    <!-- Targetes de Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="PokeWorlDex - Tu Pokédex Interactiva">
     <meta name="twitter:description" content="La Pokédex más completa en español con todas las regiones Pokémon">
@@ -30,19 +30,47 @@
     <link rel="stylesheet" href="resources/css/style.footer.css"/>
     <link rel="stylesheet" href="resources/css/style.generic.css"/>
 
-    <!-- Fonts from Google Fonts -->
+    <!-- Fonts servides per Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
     <link rel="shortcut icon" href="resources/img/icon.ico" />
+
+    <!-- Dades estructurades JSON-LD per a cercadors -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://PokeWorlDex/#website",
+          "name": "PokeWorlDex",
+          "url": "https://PokeWorlDex",
+          "inLanguage": "es",
+          "description": "Pokedex completa en espanol con regiones, fichas de Pokemon, tipos y evoluciones.",
+          "publisher": { "@id": "https://PokeWorlDex/#organization" }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://PokeWorlDex/#organization",
+          "name": "PokeWorlDex",
+          "url": "https://PokeWorlDex",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://PokeWorlDex/resources/img/icon.ico"
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 
 <body>
     <div id="header-root"></div>
     
     <main class="main-container">
-        <!-- Hero Section -->
+        <!-- Seccio hero principal -->
         <section class="hero">
             <div class="hero-content">
                 <h1 class="hero-title">PokeWorlDex</h1>
@@ -50,7 +78,7 @@
             </div>
         </section>
 
-        <!-- Features Grid -->
+        <!-- Graella de caracteristiques -->
         <section class="features-section">
             <div class="features-grid">
                 <article class="feature-card">
@@ -88,7 +116,7 @@
             </div>
         </section>
 
-        <!-- Info Section -->
+        <!-- Seccio informativa -->
         <section class="info-section">
             <div class="info-content">
                 <h2 class="info-title">¿Qué es PokeWorlDex?</h2>
@@ -99,14 +127,14 @@
 
     <div id="footer-root"></div>
 
-    <!-- React and ReactDOM desde CDN -->
+    <!-- React i ReactDOM des del CDN -->
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     
-    <!-- Babel per permitir JSX -->
+    <!-- Babel per permetre JSX al navegador -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <!-- Header/Footer amb JSX -->
+    <!-- Header/Footer renderitzats amb JSX -->
     <script type="text/babel" src="resources/react/header.jsx"></script>
     <script type="text/babel" src="resources/react/footer.jsx"></script>
 </body>

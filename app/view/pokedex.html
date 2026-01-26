@@ -8,7 +8,7 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://PokeWorlDex/app/view/pokedex.html">
     
-    <!-- Open Graph -->
+    <!-- Metadades Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Pokédex Completa por Regiones - PokeWorlDex">
     <meta property="og:description" content="Explora todos los Pokémon organizados por región con información detallada en español">
@@ -24,6 +24,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+        <!-- Dades estructurades per a la col·lecció -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "Pokedex completa por regiones",
+            "url": "https://PokeWorlDex/app/view/pokedex.html",
+            "inLanguage": "es",
+            "isPartOf": { "@id": "https://PokeWorlDex/#website" },
+            "description": "Consulta todos los Pokemon con tipos, estadisticas, descripcion y evoluciones organizados por region.",
+            "mainEntity": {
+                "@type": "ItemList",
+                "name": "Listado de Pokemon por region",
+                "itemListOrder": "https://schema.org/ItemListOrderAscending"
+            }
+        }
+        </script>
 </head>
 <body>
     <div id="header-root"></div>
@@ -32,18 +50,18 @@
 
     <div id="footer-root"></div>
 
-    <!-- React and ReactDOM desde CDN -->
+    <!-- React i ReactDOM des del CDN -->
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     
-    <!-- Babel per permitir JSX -->
+    <!-- Babel per permetre JSX al navegador -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <!-- Header/Footer amb JSX -->
+    <!-- Header/Footer renderitzats amb JSX -->
     <script type="text/babel" src="../../resources/react/header.jsx"></script>
     <script type="text/babel" src="../../resources/react/footer.jsx"></script>
 
-    <!-- Pokedex template amb JSX -->
+    <!-- Plantilla de la Pokédex amb JSX -->
     <script type="text/babel" src="../../resources/react/pokedex.jsx"></script>
 </body>
 </html>

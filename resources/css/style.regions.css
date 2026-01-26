@@ -16,13 +16,13 @@ body {
     min-height: 100vh;
 }
 
-/* ===== REGIONS MAIN ===== */
+/* ===== COS PRINCIPAL DE REGIONS ===== */
 
 .regions-main {
     width: 100%;
 }
 
-/* ===== REGIONS HEADER ===== */
+/* ===== CAPCALERA DE REGIONS ===== */
 
 .regions-header {
     background: linear-gradient(135deg, #5b8fc7 0%, #3d5a80 100%);
@@ -48,7 +48,7 @@ body {
     font-weight: 300;
 }
 
-/* ===== REGIONS CONTAINER ===== */
+/* ===== CONTENIDOR DE REGIONS ===== */
 
 .regions-container {
     max-width: 1400px;
@@ -62,7 +62,7 @@ body {
     gap: 28px;
 }
 
-/* ===== REGION CARD ===== */
+/* ===== TARGETA DE REGIO ===== */
 
 .region-card {
     background: white;
@@ -168,7 +168,7 @@ body {
     transform: translateY(0);
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
+/* ===== DISSENY RESPONSIVE ===== */
 
 @media (max-width: 1024px) {
     .regions-title {

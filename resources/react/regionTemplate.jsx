@@ -2,7 +2,7 @@
 const { useEffect, useMemo, useState } = React;
 
 /* =========================
-   Config / Diccionarios
+    Config / Diccionaris
 ========================= */
 
 const REGION_NAME_ES_OVERRIDE = { unova: "Teselia" };
@@ -43,7 +43,7 @@ const REGION_STARTERS = {
     paldea: ["sprigatito", "fuecoco", "quaxly"],
 };
 
-/* Traducción de métodos de encuentro */
+/* Traduccio de metodes de trobada */
 const ENCOUNTER_METHOD_NAMES = {
     "walk": "Caminando",
     "old-rod": "Caña Vieja",
@@ -80,7 +80,7 @@ const ENCOUNTER_METHOD_NAMES = {
 };
 
 /* =========================
-   Helpers (UI)
+    Helpers (UI)
 ========================= */
 
 function getRegionDisplayName(regionData, regionSlug) {
@@ -127,17 +127,17 @@ function translateEncounterMethod(methodName) {
 }
 
 /* =========================
-   Helpers (API)
+    Helpers (API)
 ========================= */
 
-// 1) Región
+// 1) Regio
 async function fetchRegion(regionSlug) {
     const res = await fetch(`https://pokeapi.co/api/v2/region/${regionSlug}`);
     if (!res.ok) throw new Error(`Error región (${regionSlug}): HTTP ${res.status}`);
     return res.json();
 }
 
-// 2) Juegos (version_groups -> versions)
+// 2) Jocs (version_groups -> versions)
 async function fetchRegionGameSlugs(regionSlug) {
     const regionData = await fetchRegion(regionSlug);
 
@@ -157,7 +157,7 @@ async function fetchRegionGameSlugs(regionSlug) {
     return Array.from(gamesSet);
 }
 
-// 3) Starters: imagen oficial
+// 3) Starters: imatge oficial
 async function fetchStarterImages(regionSlug) {
     const starters = getRegionStarters(regionSlug);
 
@@ -178,29 +178,29 @@ async function fetchStarterImages(regionSlug) {
     return results;
 }
 
-// Puntos de interés: SOLO rutas + ciudades/pueblos/“áreas importantes”
-// - Traduce usando window.getLocationNameES (tu diccionario + fallback)
-// - Si no existe window.getLocationNameES, usa ES/EN de la API o slug formateado
+// Punts d'interes: NOMES rutes + ciutats/pobles/"zones importants"
+// - Tradueix usant window.getLocationNameES (diccionari propi + fallback)
+// - Si no existeix window.getLocationNameES, usa ES/EN de l'API o slug formatejat
 async function fetchRoutesAndCities(regionData, regionSlug) {
-    // Palabras para descartar “no-ciudades” cuando no hay patrón claro
+    // Paraules per descartar "no-ciutats" quan no hi ha patro clar
     const NON_TOWN_KEYWORDS = [
         "cave", "forest", "woods", "mine", "mount", "mt", "tower", "sea", "desert",
         "lake", "river", "beach", "bay", "island", "tunnel", "trail", "ruins",
         "power-plant", "safari", "dojo"
     ];
 
-    // Paldea: muchas “zonas” no son rutas ni cities/towns
-    // (provincia/area/mesagoza etc). Si tienes diccionario, mejor, pero esto ayuda.
+    // Paldea: moltes "zones" no son rutes ni cities/towns
+    // (provincia/area/mesagoza etc). Si tens diccionari, millor, pero aixo ajuda.
     const PALDEA_ALLOW = ["province", "area"];
 
-    // Galar: muchas ciudades no llevan City/Town
+    // Galar: moltes ciutats no porten City/Town
     const GALAR_TOWNS_ALLOW = [
         "postwick", "wedgehurst", "motostoke", "turffield", "hulbury",
         "hammerlocke", "stow-on-side", "ballonlea", "circhester",
         "spikemuth", "wyndon"
     ];
 
-    // 1) Traducimos cada location a un nombre “final”
+    // 1) Traduim cada location a un nom "final"
     const translated = await Promise.all(
         regionData.locations.map(async (loc) => {
 
@@ -234,19 +234,19 @@ async function fetchRoutesAndCities(regionData, regionSlug) {
         })
     );
 
-    // 2) Filtrar SOLO lo que queremos (rutas + ciudades/pueblos + paldea areas)
+    // 2) Filtrar NOMES el que volem (rutes + ciutats/pobles + zones de Paldea)
     const filtered = translated.filter((x) => {
         const slug = x.slug.toLowerCase();
         const n = x.name.toLowerCase();
 
-        // Rutas (ES/EN + slug)
+        // Rutes (ES/EN + slug)
         const isRoute =
             n.includes("ruta ") ||
             n.includes("route ") ||
             slug.includes("route") ||
             slug.includes("sea-route");
 
-        // Ciudades/pueblos por palabra (ES/EN)
+        // Ciutats/pobles per paraula (ES/EN)
         const isTownByWord =
             n.includes("ciudad ") ||
             n.includes("pueblo ") ||
@@ -255,24 +255,24 @@ async function fetchRoutesAndCities(regionData, regionSlug) {
             n.includes(" town") ||
             n.includes(" village");
 
-        // Galar towns (allowlist)
+        // Ciutats de Galar (allowlist)
         const isGalarTown =
             regionSlug === "galar" &&
             GALAR_TOWNS_ALLOW.some((t) => slug === t || n === t);
 
-        // Paldea zones (province/area)
+        // Zones de Paldea (province/area)
         const isPaldeaZone =
             regionSlug === "paldea" &&
             PALDEA_ALLOW.some((k) => slug.includes(k) || n.includes(k));
 
-        // Evitar cuevas/bosques etc si estamos detectando “town”
+        // Evitar coves/boscos etc si estem detectant "town"
         const looksLikeNonTown = NON_TOWN_KEYWORDS.some((k) => slug.includes(k) || n.includes(k));
 
         if (isRoute) return true;
         if (isGalarTown) return true;
         if (isPaldeaZone) return true;
 
-        // Si parece ciudad/pueblo pero no es cueva/mina/etc
+        // Si sembla ciutat/poble pero no es cova/mina/etc
         if (isTownByWord && !looksLikeNonTown) return true;
 
         return false;
@@ -281,7 +281,7 @@ async function fetchRoutesAndCities(regionData, regionSlug) {
     // 3) Ordenar
     filtered.sort((a, b) => a.name.localeCompare(b.name, "es"));
 
-    // 🔥 Eliminar duplicados por nombre visible (Ciudad Hauoli, etc.)
+    // 🔥 Eliminar duplicats per nom visible (Ciutat Hauoli, etc.)
     const uniqueByName = [];
     const seenNames = new Set();
 
@@ -296,14 +296,14 @@ async function fetchRoutesAndCities(regionData, regionSlug) {
     return uniqueByName;
 }
 
-// Obtener detalles de una localización (encuentros, etc)
+// Obtenir detalls d'una localitzacio (trobades, etc)
 async function fetchLocationDetails(locationSlug, regionSlug, gameVersions) {
     try {
         const locationRes = await fetch(`https://pokeapi.co/api/v2/location/${locationSlug}`);
         if (!locationRes.ok) throw new Error(`No se encontró localización: ${locationSlug}`);
         const locationData = await locationRes.json();
 
-        // Casos especiales (regiones sin datos en PokeAPI)
+        // Casos especials (regions sense dades a PokeAPI)
         if (["galar", "paldea"].includes(regionSlug)) {
             return {
                 name: locationData.names?.find(n => n.language.name === "es")?.name || locationSlug,
@@ -312,7 +312,7 @@ async function fetchLocationDetails(locationSlug, regionSlug, gameVersions) {
             };
         }
 
-        // Obtener área de la localización
+        // Obtenir area de la localitzacio
         const areaUrl = locationData.areas && locationData.areas.length > 0 
             ? locationData.areas[0].url 
             : null;
@@ -328,7 +328,7 @@ async function fetchLocationDetails(locationSlug, regionSlug, gameVersions) {
         if (!areaRes.ok) throw new Error(`No se encontró área: ${areaUrl}`);
         const areaData = await areaRes.json();
 
-        // Procesar encuentros por método
+        // Processem trobades per metode
         const encountersMap = {};
 
         if (areaData.pokemon_encounters && Array.isArray(areaData.pokemon_encounters)) {
@@ -381,12 +381,12 @@ function Region() {
         return (urlParams.get("region") || "kanto").toLowerCase();
     }, []);
 
-    // Datos base
+    // Dades base
     const [regionData, setRegionData] = useState(null);
     const [loadingRegion, setLoadingRegion] = useState(true);
     const [errorRegion, setErrorRegion] = useState(null);
 
-    // Juegos
+    // Jocs
     const [games, setGames] = useState([]);
     const [loadingGames, setLoadingGames] = useState(true);
 
@@ -394,21 +394,21 @@ function Region() {
     const [starters, setStarters] = useState([]);
     const [loadingStarters, setLoadingStarters] = useState(true);
 
-    // Puntos de interés (rutas+ciudades)
+    // Punts d'interes (rutes + ciutats)
     const [interestPoints, setInterestPoints] = useState({ routes: [], cities: [] });
     const [loadingPoints, setLoadingPoints] = useState(true);
 
-    // Localización seleccionada
+    // Localitzacio seleccionada
     const [selectedLocation, setSelectedLocation] = useState(null);
     const [loadingLocation, setLoadingLocation] = useState(false);
 
-    // Versiones de juegos (slugs sin traducir para filtrar encuentros)
+    // Versions de jocs (slugs sense traduir per filtrar trobades)
     const [gameVersions, setGameVersions] = useState([]);
 
-    // Ref para scroll automático
+    // Ref per a scroll automatic
     const infoSectionRef = React.useRef(null);
 
-    // 1) Cargar región
+    // 1) Carregar regio
     useEffect(() => {
         const run = async () => {
             try {
@@ -427,7 +427,7 @@ function Region() {
         run();
     }, [regionSlug]);
 
-    // 2) Cargar puntos de interés (solo rutas+ciudades) cuando hay regionData
+    // 2) Carregar punts d'interes (nomes rutes+ciutats) quan ja tenim regionData
     useEffect(() => {
         if (!regionData) return;
 
@@ -436,13 +436,13 @@ function Region() {
                 setLoadingPoints(true);
                 const points = await fetchRoutesAndCities(regionData, regionSlug);
                 
-                // Separar rutas de ciudades/pueblos
+                // Separar rutes de ciutats/pobles
                 const routes = points.filter(p => 
                     p.name.toLowerCase().includes('ruta') || 
                     p.name.toLowerCase().includes('route') ||
                     p.slug.toLowerCase().includes('route')
                 ).sort((a, b) => {
-                    // Extraer números de las rutas
+                    // Extreure numeros de les rutes
                     const numA = parseInt(a.name.match(/\d+/)?.[0] || '0');
                     const numB = parseInt(b.name.match(/\d+/)?.[0] || '0');
                     return numA - numB;
@@ -467,17 +467,17 @@ function Region() {
     }, [regionData, regionSlug]);
 
 
-    // 3) Cargar juegos
+    // 3) Carregar jocs
     useEffect(() => {
         const run = async () => {
             try {
                 setLoadingGames(true);
                 const slugs = await fetchRegionGameSlugs(regionSlug);
 
-                // Guardar los slugs sin traducir para filtrar encuentros
+                // Desar els slugs sense traduir per filtrar trobades
                 setGameVersions(slugs);
 
-                // Traducción si existe tu librería global
+                // Traduccio si existeix la teva llibreria global
                 const translated = window.translateGameNames ? window.translateGameNames(slugs) : slugs;
                 setGames(translated);
             } catch (e) {
@@ -492,7 +492,7 @@ function Region() {
         run();
     }, [regionSlug]);
 
-    // 4) Cargar starters
+    // 4) Carregar starters
     useEffect(() => {
         const run = async () => {
             try {
@@ -510,13 +510,13 @@ function Region() {
         run();
     }, [regionSlug]);
 
-    // Manejar click en una localización
+    // Gestionar clic en una localitzacio
     const handleLocationClick = async (locationSlug, locationName) => {
         setLoadingLocation(true);
         const details = await fetchLocationDetails(locationSlug, regionSlug, gameVersions);
         if (details) {
             setSelectedLocation({ slug: locationSlug, ...details });
-            // Scroll automático a la sección de abajo
+            // Scroll automatic cap a la seccio inferior
             setTimeout(() => {
                 infoSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 100);

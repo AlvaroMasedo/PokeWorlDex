@@ -46,7 +46,7 @@
 }
 
 /* ========================
-   Selector de tipos
+    Selector de tipus
 ======================== */
 
 .selector-section {
@@ -97,7 +97,7 @@
     transform: scale(1.05);
 }
 
-/* Tipos seleccionados */
+/* Tipus seleccionats */
 .selected-types {
     background: var(--bg-light);
     padding: 20px;
@@ -161,7 +161,7 @@
 }
 
 /* ========================
-   Carga y errores
+    Carrega i errors
 ======================== */
 
 .loading,
@@ -184,7 +184,7 @@
 }
 
 /* ========================
-   Tabla de efectividad
+    Taula d'efectivitat
 ======================== */
 
 .effectiveness-section {
@@ -228,7 +228,7 @@
     color: var(--text-color);
 }
 
-/* Colores por multiplicador */
+/* Colors per multiplicador */
 .effectiveness-card.x4 {
     border-left-color: #c62828;
     background: rgba(198, 40, 40, 0.05);
@@ -277,7 +277,7 @@
 }
 
 /* ========================
-   Estado vacío
+    Estat buit
 ======================== */
 
 .empty-state {
@@ -288,7 +288,7 @@
 }
 
 /* ========================
-   Responsivo
+    Responsive
 ======================== */
 
 @media (max-width: 768px) {

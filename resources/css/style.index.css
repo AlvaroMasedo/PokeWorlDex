@@ -1,4 +1,4 @@
-/* ===== GENERAL STYLES ===== */
+/* ===== ESTILS GENERALS ===== */
 
 html, body {
     margin: 0;
@@ -23,7 +23,7 @@ main {
     padding: 0 20px;
 }
 
-/* ===== HERO SECTION ===== */
+/* ===== SECCIO HERO ===== */
 
 .hero {
     padding: 60px 0 50px;
@@ -57,7 +57,7 @@ main {
     letter-spacing: 0.3px;
 }
 
-/* ===== FEATURES SECTION ===== */
+/* ===== SECCIO DE FUNCIONS ===== */
 
 .features-section {
     padding: 40px 20px;
@@ -176,7 +176,7 @@ main {
     transform: translateY(-1px);
 }
 
-/* ===== INFO SECTION ===== */
+/* ===== SECCIO D'INFO ===== */
 
 .info-section {
     background: white;
@@ -212,7 +212,7 @@ main {
     line-height: 1.7;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
+/* ===== DISSENY RESPONSIVE ===== */
 
 @media (max-width: 1200px) {
     .features-grid {

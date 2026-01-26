@@ -71,7 +71,7 @@ nav h3 {
     font-family: 'Quicksand', sans-serif;
 }
 
-/* Igualar alturas de las dos listas en el nav */
+/* Igualar altures de les dues llistes al nav */
 nav .interest-list {
     flex: 1;
     min-height: 0;
@@ -82,7 +82,7 @@ nav {
     flex-direction: column;
 }
 
-/* Subtítulos de grupos en el nav */
+/* Subtítols de grups al nav */
 nav .nav-subtitle {
     color: #ffffff;
     margin: 30px 0 15px 0;
@@ -422,7 +422,7 @@ main ul li:hover {
 }
 
 /* ==========================================
-   GAMES SECTION
+    SECCIO DE JOCS
 ========================================== */
 
 .games-container {
@@ -451,7 +451,7 @@ main ul li:hover {
 }
 
 /* ==========================================
-   PROFESSOR SECTION
+    SECCIO DEL PROFESSOR/A
 ========================================== */
 
 .professor-section {
@@ -494,7 +494,7 @@ main ul li:hover {
 }
 
 /* ==========================================
-   INFO SECTION / LOCATION DETAILS
+    SECCIO D'INFO / DETALLS DE LOCALITZACIO
 ========================================== */
 
 .info {
@@ -530,7 +530,7 @@ main ul li:hover {
 }
 
 /* ==========================================
-   LOCATION DETAILS / ENCOUNTERS
+    DETALLS DE LOCALITZACIO / TROBADES
 ========================================== */
 
 .location-header h2 {
@@ -563,7 +563,7 @@ main ul li:hover {
 }
 
 /* ==========================================
-   POKEMON ENCOUNTERS
+    TROBADES DE POKEMON
 ========================================== */
 
 .encounters-section h3 {

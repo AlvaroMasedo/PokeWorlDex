@@ -1,7 +1,7 @@
 // tiposInteractivo.jsx
 const { useEffect, useState } = React;
 
-// Importar constantes y servicios
+// Importar constants i serveis
 const TYPE_NAMES_ES = {
     normal: "Normal",
     fire: "Fuego",
@@ -44,11 +44,11 @@ const TYPE_COLORS = {
     fairy: "#EE99AC",
 };
 
-// Tipos que son débiles a sí mismos
+// Tipus que son febles a si mateixos
 const WEAK_TO_SELF = ["ghost", "dragon"];
 
 /* =========================
-   Servicios
+    Serveis
 ========================= */
 
 async function fetchAllTypes() {
@@ -123,10 +123,11 @@ async function calculateTypeEffectiveness(typeNames) {
 }
 
 /* =========================
-   Componentes
+    Components
 ========================= */
 
 function TypeSelector({ allTypes, selectedTypes, onTypeToggle }) {
+    // Permetem fins a 2 tipus seleccionats a la vegada
     return (
         <div className="tipo-selector">
             {allTypes.map((type) => (
@@ -299,7 +300,7 @@ function TiposInteractivo() {
     );
 }
 
-// Renderizar componente
+// Renderitzar component
 const container = document.getElementById("tipos-container");
 if (container) {
     ReactDOM.createRoot(container).render(<TiposInteractivo />);
