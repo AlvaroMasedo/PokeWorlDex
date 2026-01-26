@@ -120,3 +120,19 @@ h3{
     border-radius: 50%;
     box-shadow: 0 1px 0 rgba(0,0,0,0.12);
 }
+
+.starters { display: flex; gap: 16px; flex-wrap: wrap; }
+.starter-card { text-align: center; }
+.starter-card img { width: 140px; height: 140px; object-fit: contain; }
+
+.interest-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.interest-list li a.button {
+  display: block;
+}
