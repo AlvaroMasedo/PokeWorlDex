@@ -69,7 +69,10 @@ window.Pokedex = function Pokedex() {
       ) : (
         <div className="parentGrid">
           {pokemon.map((p) => (
-            <div className="cuadrat" key={p.id}>
+            <div className="cuadrat" key={p.id} 
+              onClick={() => {
+              window.location.href = `pokemon.html?id=${p.id}`;
+            }}>
               <img className="imgPoke" src={p.image} alt={p.name} />
             </div>
           ))}

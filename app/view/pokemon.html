@@ -1,40 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon</title>
     <link rel="stylesheet" href="../../resources/css/style.header.css"/>
     <link rel="stylesheet" href="../../resources/css/style.footer.css"/>
     <link rel="stylesheet" href="../../resources/css/style.generic.css"/>
-    <link rel="stylesheet" href="../../resources/css/style.pokedex.css"/>
-    <title>Pokédex</title>
-
+    <link rel="stylesheet" href="../../resources/css/style.pokemon.css"/>
     <!-- Fonts from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-
-    <script src="../../lib/translate.types.js"></script>
 </head>
+
 <body>
     <div id="header-root"></div>
-    
-    <div id="kanto-root"></div>
+
+    <div id="pokemon-root"></div>
 
     <div id="footer-root"></div>
+
 
     <!-- React and ReactDOM desde CDN -->
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-    
+
     <!-- Babel per permitir JSX -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <!-- Header/Footer amb JSX -->
     <script type="text/babel" src="../../resources/react/header.jsx"></script>
     <script type="text/babel" src="../../resources/react/footer.jsx"></script>
-
     <!-- Pokedex template amb JSX -->
-    <script type="text/babel" src="../../resources/react/pokedex.jsx"></script>
+    <script type="text/babel" src="../../resources/react/pokemonTemplate.jsx"></script>
 </body>
+
 </html>
