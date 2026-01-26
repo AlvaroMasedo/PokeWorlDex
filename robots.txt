@@ -3,9 +3,7 @@
 
 User-agent: *
 Allow: /
-Allow: /resources/css/
 Allow: /resources/img/
-Allow: /resources/react/
 
 # Bloquear páginas de autenticación
 Disallow: /app/view/login.html
@@ -14,6 +12,8 @@ Disallow: /app/view/signup.html
 # Bloquear archivos internos y scripts
 Disallow: /lib/
 Disallow: /resources/js/
+Disallow: /resources/react/
+Disallow: /resources/css/
 
 # Sitemap
 Sitemap: https://PokeWorlDex.netlify.app/sitemap.xml
