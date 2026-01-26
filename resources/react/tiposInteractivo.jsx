@@ -287,30 +287,6 @@ function TiposInteractivo() {
                 <div className="effectiveness-section">
                     <h2>Análisis de Efectividad</h2>
                     <EffectivenessGrid effectiveness={effectiveness} />
-
-                    <div className="legend">
-                        <h3>¿Cómo leer esta tabla?</h3>
-                        <ul>
-                            <li>
-                                <strong>x4:</strong> Ataques de estos tipos causan 4x de daño (muy débil)
-                            </li>
-                            <li>
-                                <strong>x2:</strong> Ataques de estos tipos causan el doble de daño (débil)
-                            </li>
-                            <li>
-                                <strong>x1:</strong> Ataques de estos tipos causan daño normal
-                            </li>
-                            <li>
-                                <strong>x0.5:</strong> Ataques de estos tipos causan la mitad de daño (resistencia)
-                            </li>
-                            <li>
-                                <strong>x0.25:</strong> Ataques de estos tipos causan 1/4 de daño (gran resistencia)
-                            </li>
-                            <li>
-                                <strong>x0:</strong> Ataques de estos tipos no causan daño (inmunidad completa)
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             )}
 
