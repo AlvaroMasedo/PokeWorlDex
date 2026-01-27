@@ -25,7 +25,6 @@ window.PokemonTemplate = function PokemonTemplate() {
     if (!id) return;
 
     (async () => {
-      // Pokémon básico
       const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
       const data = await res.json();
       setPokemon(data);
@@ -74,7 +73,7 @@ window.PokemonTemplate = function PokemonTemplate() {
         setDescription(entryEs.flavor_text.replace(/\f|\n/g, " "));
       }
 
-      // 🔥 Cadena evolutiva
+      // Cadena evolutiva
       const resEvo = await fetch(species.evolution_chain.url);
       const evoData = await resEvo.json();
 
